@@ -443,12 +443,12 @@ def arg_parse():
     # Training parameters
     parser.add_argument('--fold_n', dest='fold_n', type=int, default=1, help='Fold number for training. (default: 1)')
     parser.add_argument('--train_dataset', dest='train_dataset', type=str, default='UCSC', help='Dataset for training. (default: UCSC)')
-    parser.add_argument('--cancer_type', dest='cancer_type', type=str, default='STAD', help='Cancer type for training. (default: all)')
+    parser.add_argument('--cancer_type', dest='cancer_type', type=str, default='GBM', help='Cancer type for training. (default: all)')
 
     parser.add_argument('--num_train_epoch', dest='num_train_epoch', type=int, default=50, help='Number of epochs to train.')
-    parser.add_argument('--batch_size', dest='batch_size', type=int, default=256, help='Batch size of training.')
+    parser.add_argument('--batch_size', dest='batch_size', type=int, default=16, help='Batch size of training.')
     parser.add_argument('--num_workers', dest = 'num_workers', type = int, default=0, help = 'Number of workers to load data.')
-    parser.add_argument('--train_lr', dest='train_lr', type=float, default=0.005, help='Learning rate for training. (default: 0.005)')
+    parser.add_argument('--train_lr', dest='train_lr', type=float, default=0.001, help='Learning rate for training. (default: 0.005)')
     parser.add_argument('--weight_decay', dest='weight_decay', type=float, default=1e-5, help='Weight decay for training. (default: 1e-5)')
     parser.add_argument('--eps', dest='eps', type=float, default=1e-7, help='Epsilon for Adam. (default: 1e-7)')
 
@@ -502,9 +502,9 @@ if __name__ == "__main__":
     #         test_trained_model(args, device)
 
     k = 5
-    fold_num_train = 5
+    fold_num_train = 1
     if args.load == 0: 
-        for fold_n in range(3, 3 + 1):
+        for fold_n in range(1, 5 + 1):
             args.fold_n = fold_n
             for nth in range(1, fold_num_train + 1):
                 train_model(nth, args, device)

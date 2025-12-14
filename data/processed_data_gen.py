@@ -337,7 +337,7 @@ np.save(os.path.join(graph_output_folder, 'seq.npy'), seq)
 import os
 
 # Set the new directory path
-new_directory = '/home/heming/vs-files/GraphSeqLM/data/'
+new_directory = '/home/chaptsand/works/GraphSeqLM/data/'
 
 # Change to the new directory
 os.chdir(new_directory)
